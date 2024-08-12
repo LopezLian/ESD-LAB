@@ -1,4 +1,6 @@
-	AREA RESET, DATA, READONLY
+#2-digit hex to equivalent BCD
+
+AREA RESET, DATA, READONLY
 	EXPORT __Vectors
 __Vectors
 	DCD 0x10001000

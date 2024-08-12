@@ -1,3 +1,4 @@
+#2-digit BCD to equivalent HEXA
 	AREA RESET, DATA, READONLY
 	EXPORT __Vectors
 __Vectors

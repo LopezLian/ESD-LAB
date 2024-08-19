@@ -1,0 +1,159 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 F04F 0400       MOV              R4, #0      ;R4==1 if element f
+                                                            ound
+   12 00000004 F04F 060A       MOV              R6, #10     ;Counter
+   13 00000008 4812            LDR              R0, =N
+   14 0000000A 4A13            LDR              R2, =KEY
+   15 0000000C 6812            LDR              R2, [R2]
+   16 0000000E         UP
+   17 0000000E F850 1B04       LDR              R1,[R0],#4
+   18 00000012 4291            CMP              R1, R2
+   19 00000014 BF08 3401       ADDEQ            R4, #1
+   20 00000018 F1A6 0601       SUB              R6, #1
+   21 0000001C 2E00            CMP              R6, #0
+   22 0000001E D1F6            BNE              UP
+   23 00000020         
+   24 00000020 4D0E            LDR              R5, =DST
+   25 00000022 602C            STR              R4, [R5]
+   26 00000024         STOP
+   27 00000024 E7FE            B                STOP
+   28 00000026 00 00 0000002A 
+              12345678 
+              34534554 
+              ABCDEF12 
+              00011122 
+              00000032 
+              69696969 
+              546AF12E 
+              00000324 
+              00000EEE N       DCD              0X2A, 0x12345678, 0x34534554, 0
+xABCDEF12, 0x00011122, 0x32, 0x69696969, 0x546AF12E, 0x324, 0x00000EEE
+   29 00000050 00000324 
+                       KEY     DCD              0x324
+   30 00000054 00000000 
+              00000000 
+              00000000         AREA             mydata, DATA, READWRITE
+   31 00000000 00000000 
+                       DST     DCD              0
+   32 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=q3text.d
+ -oq3text.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=q3text.lst q3text.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file q3text.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file q3text.asm
+   Uses
+      At line 2 in file q3text.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+KEY 00000050
+
+Symbol: KEY
+   Definitions
+      At line 29 in file q3text.asm
+   Uses
+      At line 14 in file q3text.asm
+Comment: KEY used once
+N 00000028
+
+Symbol: N
+   Definitions
+      At line 28 in file q3text.asm
+   Uses
+      At line 13 in file q3text.asm
+Comment: N used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file q3text.asm
+   Uses
+      At line 5 in file q3text.asm
+      At line 9 in file q3text.asm
+
+STOP 00000024
+
+Symbol: STOP
+   Definitions
+      At line 26 in file q3text.asm
+   Uses
+      At line 27 in file q3text.asm
+Comment: STOP used once
+UP 0000000E
+
+Symbol: UP
+   Definitions
+      At line 16 in file q3text.asm
+   Uses
+      At line 22 in file q3text.asm
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file q3text.asm
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 31 in file q3text.asm
+   Uses
+      At line 24 in file q3text.asm
+Comment: DST used once
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 30 in file q3text.asm
+   Uses
+      None
+Comment: mydata unused
+2 symbols
+343 symbols in table
